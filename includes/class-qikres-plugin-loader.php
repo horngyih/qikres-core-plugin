@@ -1,6 +1,5 @@
 <?php
-
-class Qikres_Core_Plugin_Loader{
+abstract class Qikres_Plugin_Loader{
     protected $actions;
     protected $filters;
     protected $custom_types;
@@ -44,5 +43,4 @@ class Qikres_Core_Plugin_Loader{
         }
     }
 }
-
 ?>

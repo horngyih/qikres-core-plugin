@@ -1,17 +1,20 @@
 <?php
 
-class Qikres_Core_Plugin{
+abstract class Qikres_Plugin{
     protected $loader;
     protected $plugin_slug;
     protected $version;
 
     public function __construct(){
-        $this->$plugin_slug = 'qikres-core-slug';
-        $this->$version = '0.1.0';
+
     }
 
     private function load_dependencies(){
-
+        if( isset( $this->loader ) ){
+            if( method_exists( $this->loader, 'run' ) ){
+                $this->loader->run();
+            }
+        }
     }
 
     private function define_hooks(){
@@ -19,7 +22,8 @@ class Qikres_Core_Plugin{
     }
 
     public function run(){
-
+        $this->load_dependencies();
+        $this->define_hooks();
     }
 
     public function get_version(){
